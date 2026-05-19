@@ -6,6 +6,15 @@
 </head>
 <body>
   <h1>Hallo GitHub!</h1>
-  <p>Das ist meine erste eigene Webseite.</p>
+  <p id="text">Das ist meine erste eigene Webseite.</p>
+
+  <button onclick="aendereText()">Klick mich</button>
+
+  <script>
+    function aendereText() {
+      document.getElementById("text").textContent =
+        "Du hast den Button geklickt!";
+    }
+  </script>
 </body>
 </html>

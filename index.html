@@ -2,18 +2,101 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Website</title>
-</head>
-<body>
-  <h1>Wir gehen rein!</h1>
-  <p id="text">Drück mal, trust me ;)</p>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dfoellmi.ch</title>
 
-  <button onclick="aendereText()">Button</button>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top left, #00d4ff 0, transparent 35%),
+        radial-gradient(circle at bottom right, #ff007a 0, transparent 35%),
+        #080b12;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    main {
+      padding: 40px;
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 8vw, 96px);
+      margin: 0 0 16px;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: clamp(18px, 3vw, 28px);
+      color: #d7e1ff;
+      margin-bottom: 32px;
+    }
+
+    button {
+      border: 0;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #080b12;
+      background: white;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 45px rgba(0, 212, 255, 0.7);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      color: #b9c7ff;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse {
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.04);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="badge">dfoellmi.ch ist live</div>
+    <h1>Wir gehen rein.</h1>
+    <p id="text">Drück mal, trust me ;)</p>
+    <button onclick="aendereText()">Launch</button>
+  </main>
 
   <script>
     function aendereText() {
-      document.getElementById("text").textContent =
-        "Du hast den Button geklickt!";
+      const text = document.getElementById("text");
+      text.textContent = "Boom. Deine Website lebt.";
+      text.classList.add("pulse");
     }
   </script>
 </body>

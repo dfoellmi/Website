@@ -58,6 +58,24 @@
       box-shadow: 0 0 45px rgba(0, 212, 255, 0.7);
     }
 
+    .kontakt-button {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .kontakt-button:hover {
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.18);
+    }
     .badge {
       display: inline-block;
       margin-bottom: 22px;
@@ -91,13 +109,32 @@
     <h1>Wir gehen rein</h1>
     <p id="text">Drück mal, trust me ;)</p>
     <button onclick="aendereText()">Launch</button>
+    <a class="kontakt-button" href="https://www.instagram.com/doemefoellmi/" target="_blank">
+      Kontakt
+    </a>  
   </main>
 
   <script>
+    const geheimeTexte = [
+      "Gib mir noch zwei Wochen",
+      "Okay okay, wir kochen",
+      "Noch geheim, aber bald live",
+      "Du bist zu früh dran ;)"
+    ];
+
+    let aktuellerText = 0;
+
     function aendereText() {
       const text = document.getElementById("text");
-      text.textContent = "Gib mir noch zwei Wochen";
+
+      text.textContent = geheimeTexte[aktuellerText];
       text.classList.add("pulse");
+
+      aktuellerText = aktuellerText + 1;
+
+      if (aktuellerText === geheimeTexte.length) {
+        aktuellerText = 0;
+      }
     }
   </script>
 </body>

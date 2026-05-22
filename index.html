@@ -91,6 +91,48 @@
       animation: pulse 1.8s infinite;
     }
 
+    .pace-rechner {
+      margin-top: 36px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .pace-rechner h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .pace-rechner label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      color: #d7e1ff;
+    }
+
+    .pace-rechner select,
+    .pace-rechner input {
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .zeit-eingabe {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    #pace-ergebnis {
+      margin-top: 18px;
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+    
     @keyframes pulse {
       0%, 100% {
         transform: scale(1);
@@ -111,7 +153,30 @@
     <button onclick="aendereText()">Launch</button>
     <a class="kontakt-button" href="https://www.instagram.com/doemefoellmi/" target="_blank">
       Kontakt
-    </a>  
+    </a>
+    <section class="pace-rechner">
+  <h2>Pace Rechner</h2>
+
+  <label for="distanz">Distanz</label>
+  <select id="distanz">
+    <option value="5">5 km</option>
+    <option value="10">10 km</option>
+    <option value="21.0975">Halbmarathon</option>
+    <option value="42.195">Marathon</option>
+  </select>
+
+  <label for="stunden">Zielzeit</label>
+  <div class="zeit-eingabe">
+    <input id="stunden" type="number" value="2" min="0">
+    <span>h</span>
+    <input id="minuten" type="number" value="0" min="0" max="59">
+    <span>min</span>
+  </div>
+
+  <button onclick="berechnePace()">Pace berechnen</button>
+
+  <p id="pace-ergebnis">Wähle Distanz und Zeit.</p>
+</section>
   </main>
 
   <script>
@@ -136,6 +201,21 @@
         aktuellerText = 0;
       }
     }
+    function berechnePace() {
+      const distanz = Number(document.getElementById("distanz").value);
+      const stunden = Number(document.getElementById("stunden").value);
+      const minuten = Number(document.getElementById("minuten").value);
+      const ergebnis = document.getElementById("pace-ergebnis");
+
+      const gesamtMinuten = stunden * 60 + minuten;
+      const pace = gesamtMinuten / distanz;
+
+      const paceMinuten = Math.floor(pace);
+      const paceSekunden = Math.round((pace - paceMinuten) * 60);
+
+      ergebnis.textContent =
+        `Du musst ca. ${paceMinuten}:${String(paceSekunden).padStart(2, "0")} min/km laufen.`;
+}
   </script>
 </body>
 </html>

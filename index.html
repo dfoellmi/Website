@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dfoellmi.ch</title>
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="75" font-size="80">⚡</text></svg>'>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <div class="badge">dfoellmi.ch</div>
+    <h1>Wir gehen rein</h1>
+    <p id="text">Drück mal, trust me ;)</p>
+
+    <button onclick="aendereText()">Launch</button>
+    <a class="kontakt-button" href="https://www.instagram.com/doemefoellmi/" target="_blank">
+      Kontakt
+    </a>
+
+    <section class="pace-rechner">
+      <h2>Pace Rechner</h2>
+
+      <label for="distanz">Distanz</label>
+      <select id="distanz">
+        <option value="5">5k</option>
+        <option value="10">10k</option>
+        <option value="21.0975">Halbmarathon</option>
+        <option value="42.195">Marathon</option>
+        <option value="100">100k Ultramarathon</option>
+      </select>
+
+      <label for="stunden">Zielzeit</label>
+      <div class="zeit-eingabe">
+        <input id="stunden" type="number" value="2" min="0">
+        <span>h</span>
+        <input id="minuten" type="number" value="0" min="0" max="59">
+        <span>min</span>
+      </div>
+
+      <button onclick="berechnePace()">Pace berechnen</button>
+
+      <p id="pace-ergebnis">Wähle Distanz und Zeit.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
